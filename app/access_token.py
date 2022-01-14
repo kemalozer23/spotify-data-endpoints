@@ -1,8 +1,8 @@
 import requests
 
 class Spotify():
-
-    def __init__(self, CLIENT_ID="3142fa4bd991430b82404c2be96a7fcb", CLIENT_SECRET="8bf4cfb7ad2d4c15981ea65d863b72e7"):
+    
+    def __init__(self, CLIENT_ID=None, CLIENT_SECRET=None):
         self.client_id = CLIENT_ID
         self.client_secret = CLIENT_SECRET
 
@@ -22,4 +22,4 @@ class Spotify():
         # save the access token
         access_token = auth_response_data['access_token']
 
-        return access_token
+        return access_token     
