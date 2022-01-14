@@ -1,5 +1,4 @@
 import requests
-import access_token
 from access_token import Spotify
 
 class Albums(Spotify):

@@ -16,7 +16,7 @@ class Spotify():
         'client_secret': self.client_secret,
         })
 
-        # convert the response to JSON
+        # convert to JSON
         auth_response_data = auth_response.json()
 
         # save the access token
