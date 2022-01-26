@@ -21,22 +21,6 @@ class Albums(Spotify):
 
         return albums_tracks_data
 
-    def get_saved_albums(self, limit=None, market=None, offset=None):
-        saved_albums_data = requests.get(self.base_url + "me/albums", headers=self.headers).json()
-
-        return saved_albums_data
-
-    def save_albums(self, ids=None): 
-        requests.put(self.base_url + "me/albums?ids=" + ids, headers=self.headers)
-
-    def remove_albums(self, ids=None):
-        requests.delete(self.base_url + "me/albums?ids=" + ids, headers=self.headers)
-
-    def check_saved_albums(self, ids=None):
-        does_contain = requests.get(self.base_url + "me/albums/contains?ids=" + ids, headers=self.headers).json()
-
-        return does_contain
-
     def get_new_releases(self, country=None, limit=None, offset=None):
         new_releases = requests.get(self.base_url + "browse/new-releases", headers=self.headers).json()
 
