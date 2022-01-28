@@ -5,7 +5,7 @@ from artists import Artists
 from tracks import Tracks
 import pandas as pd
 
-gramsa = Artists(CLIENT_ID="521227c9e92947dcaffe328f28b0b6e6", CLIENT_SECRET="b6f7c7c8f1ff4bb7b3489120c2557aa6")
+gramsa = Artists()
 
 def top_tracks_table(id=None, market=None):
     top_tracks = gramsa.get_artists_top_tracks(id=id, market=market)
