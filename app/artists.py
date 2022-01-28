@@ -22,7 +22,8 @@ class Artists(Spotify):
         return artists_albums
 
     def get_artists_top_tracks(self, id=None, market=None):
-        artists_top_tracks = requests.get(self.base_url + "artists/" + id + "/top-tracks", headers=self.headers).json()
+        
+        artists_top_tracks = requests.get(self.base_url + "artists/" + id + "/top-tracks?market=" + market, headers=self.headers).json()
 
         return artists_top_tracks
 
