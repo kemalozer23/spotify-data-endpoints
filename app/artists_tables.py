@@ -71,5 +71,3 @@ def related_artists_table(id=None):
     df = pd.DataFrame({"Name": names})
 
     return df
-
-print(related_artists_table(id="5c3GLXai8YOMid29ZEuR9y"))
