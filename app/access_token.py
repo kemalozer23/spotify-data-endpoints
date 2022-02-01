@@ -1,8 +1,9 @@
 import requests
 
+
 class Spotify():
     
-    def __init__(self, CLIENT_ID=None, CLIENT_SECRET=None, BASE_URL = 'https://api.spotify.com/v1/'): # change base url as global variable
+    def __init__(self, CLIENT_ID=None, CLIENT_SECRET=None, BASE_URL = 'https://api.spotify.com/v1/'):
         self.client_id = CLIENT_ID
         self.client_secret = CLIENT_SECRET
         self.base_url = BASE_URL
