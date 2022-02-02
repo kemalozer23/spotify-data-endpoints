@@ -1,3 +1,4 @@
+from tkinter.font import names
 import requests
 from access_token import Spotify
 from albums import Albums
@@ -43,25 +44,25 @@ class ArtistsTables(Artists):
     
         top_tracks = self.get_artists_top_tracks(id=id, market=market)
 
-        top_tracks_list = []
-        artist_name = []
+        names = []
+        popularity = []
         duration_ms = []
         album = []
         release_date = []
 
         for i in range(10):
-            top_tracks_list.append(top_tracks["tracks"][i]["name"])
-            artist_name.append(top_tracks["tracks"][i]["popularity"])
+            names.append(top_tracks["tracks"][i]["name"])
+            popularity.append(top_tracks["tracks"][i]["popularity"])
             duration_ms.append(top_tracks["tracks"][i]["duration_ms"])
             album.append(top_tracks["tracks"][i]["album"]["name"])
             release_date.append(top_tracks["tracks"][i]["album"]["release_date"])
 
         df = pd.DataFrame({
-            "Track": top_tracks_list,
-            "Album": album,
-            "Release Date": release_date,
-            "Popularity": artist_name, 
-            "Duration_ms": duration_ms
+            "name": names,
+            "album": album,
+            "release Date": release_date,
+            "popularity": popularity, 
+            "duration_ms": duration_ms
         })
 
         return df

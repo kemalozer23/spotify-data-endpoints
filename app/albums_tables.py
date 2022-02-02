@@ -1,10 +1,12 @@
-from numpy import append
 import requests
 from access_token import Spotify
 from albums import Albums
 from artists import Artists
 from tracks import Tracks
 import pandas as pd
+import plotly.express as px
+import streamlit as st
+import math
 
 
 class AlbumsTables(Albums):
@@ -12,6 +14,7 @@ class AlbumsTables(Albums):
     def __init__(self):
         super().__init__()
 
+    # Create a dataframe using the get_album function defined in the Albums class.
     def album_table(self, id=None):
         
         album_data = self.get_album(id=id)
@@ -26,6 +29,7 @@ class AlbumsTables(Albums):
 
         return df
 
+    # Create a dataframe using the get_albums function defined in the Albums class.
     def albums_table(self, ids=None):
 
         albums_data = self.get_albums(ids=ids)
@@ -53,6 +57,7 @@ class AlbumsTables(Albums):
 
         return df
 
+    # Create a dataframe using the get_album_tracks function defined in the Albums class.
     def album_tracks_table(self, id=None):
 
         album_tracks_data = self.get_album_tracks(id=id)
@@ -70,3 +75,4 @@ class AlbumsTables(Albums):
         })
 
         return df
+    

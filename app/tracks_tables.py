@@ -5,12 +5,12 @@ from artists import Artists
 from tracks import Tracks
 import pandas as pd
 
-
 class TracksTables(Tracks):
 
     def __init__(self):
         super().__init__()
 
+    # Create a dataframe using the get_audio_features function defined in the Tracks class.
     def audio_features_table(self, id=None):
 
         audio_features = self.get_audio_features(id=id)
@@ -34,6 +34,7 @@ class TracksTables(Tracks):
 
         return df
 
+    # Create a dataframe using the get_several_audio_features function defined in the Tracks class.
     def several_audio_features_table(self, ids=None):
 
         severeal_audio_features = self.get_several_audio_features(ids=ids)
@@ -88,12 +89,35 @@ class TracksTables(Tracks):
 
         return df
 
+    # Create a dataframe using the get_audio_analysis function defined in the Tracks class.
     def audio_analysis_table(self, id=None):
 
         audio_analysis = self.get_audio_analysis(id=id)
 
-        # df = pd.DataFrame({
-        # a lot of data 
-        # })
+        df = pd.DataFrame({
+            "duration": audio_analysis["track"]["duration"],
+            "loudness": audio_analysis["track"]["loudness"],
+            "tempo": audio_analysis["track"]["tempo"],
+            "time_signature": audio_analysis["track"]["time_signature"],
+            "key": audio_analysis["track"]["key"],
+            "mode": audio_analysis["track"]["mode"]
+        }, index=[0])
 
-        return audio_analysis
+        pitches = []
+        timbre = []
+
+        for i in range(len(audio_analysis["segments"])):
+            pitches.append(audio_analysis["segments"][i]["pitches"])
+            timbre.append(audio_analysis["segments"][i]["timbre"])
+
+        df2 = pd.DataFrame({
+            "pitches": pitches,
+            "timbre": timbre
+        })
+
+        return df
+
+
+gramsa = TracksTables()
+
+df = gramsa.audio_analysis_table(id="6AshXllQhobwSXsdpgp41w")
