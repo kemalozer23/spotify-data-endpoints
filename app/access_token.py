@@ -3,22 +3,24 @@ import requests
 
 class Spotify():
     
-    def __init__(self, CLIENT_ID=None, CLIENT_SECRET=None, BASE_URL = 'https://api.spotify.com/v1/'):
-        self.client_id = CLIENT_ID
-        self.client_secret = CLIENT_SECRET
-        self.base_url = BASE_URL
+    CLIENT_ID = "0cebdd0075c843f3a6e91282e96ef5aa"
+    CLIENT_SECRET = "d9f720afcda74bd589ea611a5d765474"
+    BASE_URL = "https://api.spotify.com/v1/"
+    AUTH_URL="https://accounts.spotify.com/api/token"
+
+
+    def __init__(self):
         self.headers = {
         "Authorization": f"Bearer {self.get_access_token()}"
         }
 
-    def get_access_token(self, AUTH_URL="https://accounts.spotify.com/api/token"):
-        self.auth_url = AUTH_URL
-
+    def get_access_token(self):
+        
         # POST request
-        auth_response = requests.post(self.auth_url, {
+        auth_response = requests.post(self.AUTH_URL, {
         'grant_type': 'client_credentials',
-        'client_id': self.client_id,
-        'client_secret': self.client_secret,
+        'client_id': self.CLIENT_ID,
+        'client_secret': self.CLIENT_SECRET,
         })
 
         # convert to JSON

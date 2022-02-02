@@ -9,8 +9,8 @@ import pandas as pd
 
 class AlbumsTables(Albums):
 
-    def __init__(self, CLIENT_ID=None, CLIENT_SECRET=None, BASE_URL='https://api.spotify.com/v1/'):
-        super().__init__(CLIENT_ID, CLIENT_SECRET, BASE_URL)
+    def __init__(self):
+        super().__init__()
 
     def album_table(self, id=None):
         
@@ -69,8 +69,4 @@ class AlbumsTables(Albums):
             "duration_ms": duration_ms
         })
 
-        return print(df)
-
-gramsa = AlbumsTables(CLIENT_ID="0cebdd0075c843f3a6e91282e96ef5aa", CLIENT_SECRET="d9f720afcda74bd589ea611a5d765474")
-
-gramsa.album_tracks_table(id="2nLOHgzXzwFEpl62zAgCEC")
+        return df

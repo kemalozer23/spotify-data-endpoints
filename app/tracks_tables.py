@@ -8,8 +8,8 @@ import pandas as pd
 
 class TracksTables(Tracks):
 
-    def __init__(self, CLIENT_ID=None, CLIENT_SECRET=None, BASE_URL='https://api.spotify.com/v1/'):
-        super().__init__(CLIENT_ID, CLIENT_SECRET, BASE_URL)
+    def __init__(self):
+        super().__init__()
 
     def audio_features_table(self, id=None):
 
