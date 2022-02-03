@@ -49,9 +49,10 @@ class Tracks(Spotify):
     def get_recommendations(self, seed_artists=None, seed_genres=None, seed_tracks=None, **kwargs):
 
         recommendations = requests.get(self.BASE_URL 
-                                    + "recommendations?" 
+                                    + "recommendations?limit=10&market=US&" 
                                     + "seed_artists=" + seed_artists + "&" 
                                     + "seed_genres="+ seed_genres + "&" 
-                                    + "seed_tracks=" + seed_tracks)
+                                    + "seed_tracks=" + seed_tracks,
+                                    headers=self.headers).json()
 
         return recommendations

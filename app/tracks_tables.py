@@ -1,3 +1,4 @@
+from operator import index
 import requests
 from access_token import Spotify
 from albums import Albums
@@ -115,9 +116,28 @@ class TracksTables(Tracks):
             "timbre": timbre
         })
 
+        df = pd.DataFrame.from_dict(audio_analysis)
+
         return df
 
+    # Create a dataframe using the get_recommendations function defined in the Tracks class.
+    def recommendations_table(self, seed_artists=None, seed_genres=None, seed_tracks=None):
 
-gramsa = TracksTables()
+        recommendations = self.get_recommendations(seed_artists=seed_artists, seed_genres=seed_genres, seed_tracks=seed_tracks)
 
-df = gramsa.audio_analysis_table(id="6AshXllQhobwSXsdpgp41w")
+        artists_name = []
+        duration_ms = []
+        tracks_name = []
+
+        for i in range(10):
+            artists_name.append(recommendations["tracks"][i]["artists"][0]["name"])
+            duration_ms.append(recommendations["tracks"][i]["duration_ms"])
+            tracks_name.append(recommendations["tracks"][i]["name"])
+
+        df = pd.DataFrame({
+            "artists_name": artists_name,
+            "tracks_name": tracks_name,
+            "duration_ms": duration_ms
+        })
+
+        return df

@@ -4,9 +4,6 @@ from albums import Albums
 from artists import Artists
 from tracks import Tracks
 import pandas as pd
-import plotly.express as px
-import streamlit as st
-import math
 
 
 class AlbumsTables(Albums):
@@ -26,6 +23,8 @@ class AlbumsTables(Albums):
             "total_tracks": album_data["total_tracks"],
             "release_date": album_data["release_date"]
         }, index=[0])
+
+        album_cover = album_data["images"][0]["url"]
 
         return df
 
@@ -75,4 +74,3 @@ class AlbumsTables(Albums):
         })
 
         return df
-    
