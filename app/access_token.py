@@ -3,8 +3,8 @@ import requests
 
 class Spotify():
     
-    CLIENT_ID = "0cebdd0075c843f3a6e91282e96ef5aa"
-    CLIENT_SECRET = "d9f720afcda74bd589ea611a5d765474"
+    CLIENT_ID = ""
+    CLIENT_SECRET = ""
     BASE_URL = "https://api.spotify.com/v1/"
     AUTH_URL="https://accounts.spotify.com/api/token"
 
