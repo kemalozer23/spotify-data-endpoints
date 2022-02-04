@@ -1,6 +1,6 @@
 from matplotlib import artist
 import requests
-from access_token import Spotify
+from token import Spotify
 import pandas as pd
 
 
